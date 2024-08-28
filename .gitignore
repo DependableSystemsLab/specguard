@@ -1,0 +1,13 @@
+drone/out
+car/out
+drone/.drone
+car/.car
+.env
+environments/*/
+!environments/*.*
+docker/PX4
+docker/ardupilot
+drone/*.zip
+car/*.zip
+!drone/models/*
+!drone/models/*.zip

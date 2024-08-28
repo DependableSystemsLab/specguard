@@ -1,0 +1,130 @@
+FROM nvidia/vulkan:1.1.121-cuda-10.1--ubuntu18.04
+
+RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys A4B469963BF863CC
+
+# Allow using GUI apps.
+ENV TERM=xterm
+ENV DEBIAN_FRONTEND=noninteractive
+RUN apt-get update \
+ && apt-get install -y tzdata \
+ && ln -fs /usr/share/zoneinfo/America/New_York /etc/localtime \
+ && dpkg-reconfigure --frontend noninteractive tzdata \
+ && apt-get clean
+
+# Some useful tools.
+RUN apt-get update \
+ && apt-get install --no-install-recommends -y \
+        build-essential sudo \
+        cmake \
+        gdb \
+        git \
+        vim \
+        tmux \
+        wget \
+        curl \
+        less \
+        htop \
+        python3-pip \
+        python-tk \
+        libsm6 libxext6 \
+        libboost-all-dev zlib1g-dev \
+        lsb-release \
+ && apt-get clean
+
+# Copied from
+# https://github.com/carla-simulator/carla/blob/78e7ea11306ca164fb664ec74d2224f2e1d01923/Util/Docker/Release.Dockerfile#L15
+RUN packages='libsdl2-2.0-0 libsdl2-dev xserver-xorg libvulkan1 libvulkan-dev' \
+       && apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y $packages --no-install-recommends \
+       && VULKAN_API_VERSION=`dpkg -s libvulkan1 | grep -oP 'Version: [0-9|\.]+' | grep -oP '[0-9|\.]+'` && \
+	mkdir -p /etc/vulkan/icd.d/ && \
+	echo \
+	"{\
+		\"file_format_version\" : \"1.0.0\",\
+		\"ICD\": {\
+			\"library_path\": \"libGLX_nvidia.so.0\",\
+			\"api_version\" : \"${VULKAN_API_VERSION}\"\
+		}\
+	}" > /etc/vulkan/icd.d/nvidia_icd.json \
+	&& rm -rf /var/lib/apt/lists/*
+
+# Add a user with the same user_id and group_id as the user outside the container.
+ARG user_id=1001
+ARG group_id=100
+ARG user_name=airsim_user
+ARG group_name=users
+
+# The "users" group with id=100 is already in the system.
+# For other group setting, uncomment the following.
+# RUN groupadd -g ${group_id} ${group_name}
+ENV USERNAME ${user_name}
+RUN useradd --uid ${user_id} --gid ${group_id} -ms /bin/bash $USERNAME \
+ && echo "$USERNAME:$USERNAME" | chpasswd \
+ && adduser $USERNAME sudo \
+ && echo "$USERNAME ALL=NOPASSWD: ALL" >> /etc/sudoers.d/$USERNAME \
+ && adduser $USERNAME audio \ 
+ && adduser $USERNAME video
+ 
+# Make sure that everything is up to date and install necessary libraries
+RUN apt update
+RUN apt install -y python3.8
+RUN python3.8 -m pip install pip --upgrade
+RUN ln -sf /usr/bin/python3.8 /usr/bin/python3
+
+RUN python3 -m pip install numpy
+RUN python3 -m pip install setuptools
+RUN python3 -m pip install tensorflow
+RUN python3 -m pip install gym
+RUN python3 -m pip install geopy
+RUN python3 -m pip install pillow
+RUN python3 -m pip install msgpack-rpc-python
+RUN python3 -m pip install airsim
+RUN python3 -m pip install pyproj
+RUN python3 -m pip install dronekit
+RUN python3 -m pip install kconfiglib
+RUN python3 -m pip install jinja2
+RUN python3 -m pip install empy
+RUN python3 -m pip install pyyaml
+RUN python3 -m pip install pyros-genmsg
+RUN python3 -m pip install jsonschema
+RUN python3 -m pip install toml
+RUN python3 -m pip install regex
+RUN python3 -m pip install argparse
+RUN python3 -m pip install sb3_contrib
+RUN python3 -m pip install sb3_contrib
+RUN python3 -m pip install 'shimmy>=0.2.1'
+
+# Container start dir.
+WORKDIR /home/$USERNAME
+
+# Create the AirSim directory structure (if still required)
+RUN mkdir -p /home/$USERNAME/Documents/AirSim/
+
+# Run as the new user.
+USER $USERNAME
+
+RUN mkdir -p PX4
+
+WORKDIR /home/$USERNAME/PX4
+
+RUN git clone https://github.com/PX4/PX4-Autopilot.git --recursive
+
+RUN chown -R ${user_id}:${group_id} /home/airsim_user/PX4/
+
+RUN bash ./PX4-Autopilot/Tools/setup/ubuntu.sh --no-nuttx --no-sim-tools
+
+WORKDIR /home/$USERNAME/PX4/PX4-Autopilot
+
+RUN git checkout v1.13.3
+
+RUN git submodule sync --recursive
+RUN git submodule update --init --recursive  || true
+
+COPY modified_px4/EKF2.cpp src/modules/ekf2/EKF2.cpp
+COPY modified_px4/PositionControl.cpp src/modules/mc_pos_control/PositionControl/PositionControl.cpp
+
+RUN sudo update-alternatives --install /usr/bin/python python /usr/bin/python3 1
+
+WORKDIR /home/$USERNAME
+
+# Entrypoint command.
+CMD /bin/bash
