@@ -6,7 +6,37 @@ Code for the paper "SpecGuard: Specification Aware Recovery for Robotic Autonomo
 - Mission specification compliant *safe* recovery for robotic autonomous vehicles (RAV).
 - Integrate Deep-RL with autopilot software such as PX4 and ArduPilot.
 - Training pipeline to learn a recovery control policy that maintains mission specification compliance even under physical attacks.
-- Multi-agent training to optimize the recovery control policy. 
+- Multi-agent training to optimize the recovery control policy.
+
+#### The structure is as follows:
+```
+drone
+|
+└─── configs    <--- configuration files
+└─── missions   <--- mission details
+└─── models   <--- trained models
+└─── modified_px4   <--- PX4 hooks to connect recovery policy with autopilot
+
+
+rover
+|
+└─── configs    <--- configuration files
+└─── missions   <--- mission details
+└─── models   <--- trained models
+└─── modified_ardupilot   <--- Ardupilot hooks to connect recovery policy with autopilot
+
+environment <--- AirSim environment binaries
+
+docker
+|
+└─── modified_px4   <--- PX4 hooks to connect recovery policy with autopilot
+└─── modified_ardupilot   <--- Ardupilot hooks to connect recovery policy with autopilot
+└─── DroneDockerfile   
+└─── RoverDockerfile
+...  
+
+requirements.txt
+```
 
 ## Dependencies and Prerequisites
 We developed and tested on Ubuntu 20.04 and Python 3.8. The following are the dependencies and prerequisites. 
