@@ -18,3 +18,15 @@ We developed and tested on Ubuntu 20.04 and Python 3.8. The following are the de
     - Install the required dependencies: `pip install -r requirements.txt`.
 5. **Install Environments**: The `environments` directory contains scripts for downloading RAV operating environments (e.g., suburban, urban city block, downtown, etc.). 
 6. **Setup: Docker or Local Installation**: Additional setup steps for different RAV types are in `drone` and `rover` directory. We also provide docker containers to run our solutions, details are in `docker` directory.
+
+## Citation
+If you find our work useful in your research, please consider citing:
+
+```
+@inproceedings{dash2024recovery,
+      title={SpecGuard: Specification Aware Recovery for Robotic Autonomous Vehicles from Physical Attacks}, 
+      author={Dash, Pritam and Chan, Ethan and Pattabiraman, Karthik},
+      booktitle = {ACM Conference on Computer and Communications Security (CCS)},
+      year={2024}
+}
+```
