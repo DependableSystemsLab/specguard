@@ -1,0 +1,71 @@
+{
+    "SettingsVersion": 1.2,
+    "SimMode": "Multirotor",
+    "ClockType": "SteppableClock",
+    "Vehicles": {
+        "PX4": {
+            "VehicleType": "PX4Multirotor",
+            "UseSerial": false,
+            "LockStep": true,
+            "UseTcp": true,
+            "TcpPort": 4560,
+            "ControlPortLocal": 14540,
+            "ControlPortRemote": 14580,
+            "Sensors": {
+                "Barometer": {
+                    "SensorType": 1,
+                    "Enabled": true,
+                    "PressureFactorSigma": 0.0001825
+                },
+                "DistanceNorth": {
+		"SensorType": 5,
+		"Enabled" : true,
+		"X": 0, "Y": 1, "Z": 0,
+		"Yaw": 0, "Pitch": 0, "Roll": 0
+		 },
+		    "DistanceEast": {
+			"SensorType": 5,
+			"Enabled" : true,
+			"X": 1, "Y": 0, "Z": 0,
+			"Yaw": 90, "Pitch": 0, "Roll": 0
+		    },
+		    "DistanceSouth": {
+			"SensorType": 5,
+			"Enabled" : true,
+			"X": 0, "Y": -1, "Z": 0,
+			"Yaw": 180, "Pitch": 0, "Roll": 0
+		    },
+		    "DistanceWest": {
+			"SensorType": 5,
+			"Enabled" : true,
+			"X": -1, "Y": 0, "Z": 0,
+			"Yaw": 270, "Pitch": 0, "Roll": 0
+		    },
+		    "DistanceUp": {
+			"SensorType": 5,
+			"Enabled" : true,
+			"X": 0, "Y": 0, "Z": 1,
+			"Yaw": 0, "Pitch": 90, "Roll": 0
+		    },
+		    "DistanceDown": {
+			"SensorType": 5,
+			"Enabled" : true,
+			"X": 0, "Y": 0, "Z": -1,
+			"Yaw": 0, "Pitch": -90, "Roll": 0
+		    }
+            },
+            "Parameters": {
+                "NAV_RCL_ACT": 0,
+                "COM_LOW_BAT_ACT": 0,
+                "COM_RC_IN_MODE": 1,
+                "COM_RCL_EXCEPT": 7,
+                "COM_OF_LOSS_T": 6,
+                "CBRK_SUPPLY_CHK": 894281,
+                "LPE_LAT": 47.641468,
+		        "LPE_LON": -122.140165,
+		"MPC_XY_CRUISE": 2.0,
+		"MPC_XY_VEL_MAX": 2.0
+            }
+        }
+    }
+}

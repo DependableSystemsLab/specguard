@@ -1,0 +1,39 @@
+Hyperparameters:
+  gamma: 0.90
+  clip_ratio: 0.2
+  value_function_learning_rate: 0.001
+  lam: 0.97
+  save_freq: 1000
+  train_steps: 1000000
+
+Connections:
+  airsim_ip: 127.0.0.1
+  px4_ip: 127.0.0.1
+  airsim_port: 14550
+  ekf2_port: 14551
+  px4_port: 14553
+  
+Paths:
+  airsim_directory: ../environments/AirSimNH/LinuxNoEditor/
+  airsim_binary_name: AirSimNH
+  px4_directory: ./PX4/PX4-Autopilot/
+  mission_file: ./missions/nh1-box.txt
+  agent_name: nh_gyro_drone
+
+SimulationSettings:
+  len_timestep: 1
+  movement_factor: 2.0
+  movement_resolution: 1
+  detection_delay: 0
+  postattack_delay: 0
+  buffer_size: 10
+  attack_cooldown: 10
+
+AttackerSettings:
+  attack_type: gyro
+  attack_lower_bound: [-6, -6, -6]
+  attack_upper_bound: [6, 6, 6]
+  attack_dur: [5, 10]
+  attack_delay: 5
+
+  
