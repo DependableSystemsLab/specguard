@@ -5,7 +5,7 @@ We provide two separate Docker containers for the drone and the rover, each desi
 ## Setup
 The Docker containers are designed to mount the `environments`, `drone`, and `rover` directories. This setup allows uers to create and modify configuration files or environment settings outside the containers while seamlessly using them inside the containers. 
 
-1. **NVIDIA Container Toolkit**: Install Docker and NVIDIA Container Toolkit. Installation instructions can be found [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
+1. **NVIDIA Container Toolkit**: Install Docker and NVIDIA Container Toolkit. Installation instructions are [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 2. **Environment Binaries**: Ensure that the environment binaries are in the `environments` directory. This allows the binaries to be shared across multiple container instances.
 3. **Configuration**: Place all configuration files, including custom AirSim `settings.json` files, in the appropriate directories - `drone` or `rover` directories. 
 
@@ -13,7 +13,7 @@ The Docker containers are designed to mount the `environments`, `drone`, and `ro
 
 ### Building the container
 
-To build the pipelinefor each RAV type, use the following scripts:
+To build for each RAV type, use the following scripts:
 ```
 ./build_drone.sh
 ./build_car.sh
