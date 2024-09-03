@@ -1,6 +1,6 @@
 # SpecGuard: Drone
 
-We integrate PX4 autopilot with Microsoft AirSim o train Deep-RL recovery control policy for drones. 
+We integrate PX4 autopilot with Microsoft AirSim to train Deep-RL recovery control policy for drones. 
 
 ## Installation and Setup
 
@@ -38,7 +38,7 @@ Ensure the configuration file is properly configured with the paths to your envi
   - `-n/--name agent_name` the name of the trained policy.
   - `-lr/--load-recovery` to load a trained policy.
   - `-la/--load-attacker` to load a trained anomaly agent.
-  - `-v/--verbose` print verbose output to console for debugging.
+  - `-v/--verbose` print verbose output for debugging.
   - `-e/--evaluate num_evaluation_episodes` number of evaluation episodes.
 
 ### Examples
