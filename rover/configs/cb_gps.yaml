@@ -1,0 +1,39 @@
+Hyperparameters:
+  gamma: 0.90
+  clip_ratio: 0.2
+  value_function_learning_rate: 0.001
+  lam: 0.97
+  save_freq: 1000
+  train_steps: 1000000
+
+Connections:
+  airsim_ip: 127.0.0.1
+  ardupilot_ip: 127.0.0.1
+  airsim_port: 14550
+  ardupilot_port: 14551
+  
+Paths:
+  airsim_directory: ../environments/CityBlock8/LinuxNoEditor/
+  airsim_binary_name: CityBlock
+  ardupilot_directory: /path/to/ardupilot # CHANGE THIS PATH
+  mission_file: ./missions/cb_bend.txt
+  agent_name: cb_gps
+
+SimulationSettings:
+  len_timestep: 1
+  throttle_magnitude: 1
+  steering_magnitude: 4500
+  throttle_resolution: 1
+  steering_resolution: 3
+  detection_delay: 4
+  postattack_delay: 5
+  buffer_size: 10
+  attack_cooldown: 15
+
+AttackerSettings:
+  attack_type: gps
+  attack_lower_bound: [-50, -50]
+  attack_upper_bound: [50, 50]
+  attack_dur: [10, 20]
+  attack_delay: 5
+  

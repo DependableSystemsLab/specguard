@@ -1,0 +1,54 @@
+{
+  "SettingsVersion": 1.2,
+  "SimMode": "Car",
+  "OriginGeopoint": {
+    "Latitude": -35.363261,
+    "Longitude": 149.165230,
+    "Altitude": 583
+  },
+  "Vehicles": {
+    "Rover": {
+      "VehicleType": "ArduRover",
+      "UseSerial": false,
+      "LocalHostIp": "127.0.0.1",
+      "UdpIp": "127.0.0.1",
+      "UdpPort": 9003,
+      "ControlPort": 9002,
+      "AutoCreate": true,
+      "Sensors": {
+        "Imu": {
+          "SensorType": 2,
+          "Enabled": true
+        },
+        "Gps": {
+          "SensorType": 3,
+          "Enabled": true
+        },
+        "DistanceNorth": {
+          "SensorType": 5,
+          "Enabled" : true,
+          "X": 0, "Y": 0, "Z": -1,
+          "Yaw": 0, "Pitch": 0, "Roll": 0
+           },
+        "DistanceEast": {
+          "SensorType": 5,
+          "Enabled" : true,
+          "X": 0, "Y": 0, "Z": -1,
+          "Yaw": 90, "Pitch": 0, "Roll": 0
+            },
+            "DistanceSouth": {
+          "SensorType": 5,
+          "Enabled" : true,
+          "X": 0, "Y": 0, "Z": -1,
+          "Yaw": 180, "Pitch": 0, "Roll": 0
+            },
+            "DistanceWest": {
+          "SensorType": 5,
+          "Enabled" : true,
+          "X": 0, "Y": 0, "Z": -1,
+          "Yaw": 270, "Pitch": 0, "Roll": 0
+            }
+      }
+    }
+  }
+}
