@@ -139,4 +139,3 @@ ATTACKS: 100 | RECOVERIES: 93  | COLLISIONS: 0
 - `ATTACKS`: number of attacks launched
 - `RECOVERIES`: successful recoveries
 - `COLLISIONS`: collisions with obstacle or ground
-```
