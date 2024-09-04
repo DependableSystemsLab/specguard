@@ -50,10 +50,10 @@ Make sure the configuration file includes the correct paths to your environment 
 
 ### Examples
 ```
-python ppo_drone.py -d -c configs/nh_gps.yaml
-python ppo_car.py -d -c configs/nh_gps.yaml
-python ppo_drone.py -d -c configs/cb_gps.yaml -lr trained_recovery_model.zip
-python ppo_car.py -d -c configs/cb_gps.yaml -lr trained_recovery_model.zip
-python ppo_drone.py -d -c configs/nh_gyro.yaml -lr trained_recovery_model.zip -la trained_attacker_model.zip -e 100 -v
-python ppo_car.py -d -c configs/nh_gyro.yaml -lr trained_recovery_model.zip -la trained_attacker_model.zip -e 100 -v
+python ppo_drone.py -d -c configs/NH/nh_gps.yaml
+python ppo_rover.py -d -c configs/nh_gps.yaml
+python ppo_drone.py -d -c configs/CB/cb_gps.yaml -lr trained_recovery_model.zip
+python ppo_rover.py -d -c configs/cb_gps.yaml -lr trained_recovery_model.zip
+python ppo_drone.py -d -c configs/NH/nh_gyro.yaml -lr trained_recovery_model.zip -la trained_attacker_model.zip -e 100 -v
+python ppo_rover.py -d -c configs/nh_gyro.yaml -lr trained_recovery_model.zip -la trained_attacker_model.zip -e 100 -v
 ```
