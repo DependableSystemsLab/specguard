@@ -1,4 +1,4 @@
-# Specification Aware Recovery for Robotic Autonomous Vehicles
+# Mission Specification Compliant Recovery for Robotic Autonomous Vehicles
 
 Code for the paper "SpecGuard: Specification Aware Recovery for Robotic Autonomous Vehicles from Physical Attacks", CCS'2024. 
 

@@ -50,12 +50,12 @@ Configuration files specify the environment, attack settings, and training hyper
 
 ```
 Hyperparameters:
-    gamma: Discount factor for future rewards in the reinforcement learning algorithm.
+    gamma: Discount factor for future rewards.
     clip_ratio: Used to limit policy updates, ensuring changes aren't too drastic.
-    value_function_learning_rate: Learning rate for the value function in the RL model.
+    value_function_learning_rate: Learning rate for the value function.
     lam: Lambda parameter for Generalized Advantage Estimation (GAE).
     save_freq: Frequency (in timesteps) at which the model is saved.
-    train_steps: Total number of training steps to be executed.
+    train_steps: Total number of training steps.
 
 Connections:
   airsim_ip: IP address for AirSim.
@@ -139,4 +139,3 @@ ATTACKS: 100 | RECOVERIES: 93  | COLLISIONS: 0
 - `ATTACKS`: number of attacks launched
 - `RECOVERIES`: successful recoveries
 - `COLLISIONS`: collisions with obstacle or ground
-```
