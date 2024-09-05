@@ -14,7 +14,6 @@ drone
 |
 └─── configs    <--- configuration files
 └─── missions   <--- mission details
-└─── models   <--- trained models
 └─── modified_px4   <--- PX4 hooks to connect recovery policy with autopilot
 
 
@@ -22,7 +21,6 @@ rover
 |
 └─── configs    <--- configuration files
 └─── missions   <--- mission details
-└─── models   <--- trained models
 └─── modified_ardupilot   <--- Ardupilot hooks to connect recovery policy with autopilot
 
 environment <--- AirSim environment binaries
