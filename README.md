@@ -45,7 +45,7 @@ We developed and tested on Ubuntu 20.04 and Python 3.8. The following are the de
     - Activate the virtual environment: `source .env/bin/activate`. 
     - Install the required dependencies: `pip install -r requirements.txt`.
 5. **Install Environments**: The `environments` directory contains scripts for downloading RAV operating environments (e.g., suburban, urban city block, downtown, etc.). 
-6. **Setup: Docker or Local Installation**: Additional setup steps for different RAV types are in `drone` and `rover` directory. We also provide docker containers to run our solutions, details are in `docker` directory.
+6. **Setup: Docker or Local Installation**: Additional setup steps for different RAV types are in `drone` and `rover` directory. We also provide docker containers to run our solutions, details are in [docker/](docker/) directory.
 
 ## Citation
 If you find our work useful in your research, please consider citing:
