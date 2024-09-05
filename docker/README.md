@@ -1,9 +1,9 @@
 # SpecGuard: Docker
 
-We provide two separate Docker containers for the drone and the rover, each designed to installation the necessary dependencies and autopilot software.
+We provide two separate Docker containers for the drone and the rover, each designed to install the necessary dependencies and autopilot software.
 
 ## Setup
-The Docker containers are designed to mount the `environments`, `drone`, and `rover` directories. This setup allows uers to create and modify configuration files or environment settings outside the containers while seamlessly using them inside the containers. 
+The Docker containers are designed to mount the `environments`, `drone`, and `rover` directories. This setup allows users to create and modify configuration files or environment settings outside the containers while seamlessly using them inside the containers. 
 
 1. **NVIDIA Container Toolkit**: Install Docker and NVIDIA Container Toolkit. Installation instructions are [here](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/latest/install-guide.html).
 2. **Environment Binaries**: Ensure that the environment binaries are in the `environments` directory. This allows the binaries to be shared across multiple container instances.
@@ -52,8 +52,16 @@ Make sure the configuration file includes the correct paths to your environment 
 ```
 python ppo_drone.py -d -c configs/NH/nh_gps.yaml
 python ppo_rover.py -d -c configs/nh_gps.yaml
-python ppo_drone.py -d -c configs/CB/cb_gps.yaml -lr trained_recovery_model.zip
-python ppo_rover.py -d -c configs/cb_gps.yaml -lr trained_recovery_model.zip
-python ppo_drone.py -d -c configs/NH/nh_gyro.yaml -lr trained_recovery_model.zip -la trained_attacker_model.zip -e 100 -v
-python ppo_rover.py -d -c configs/nh_gyro.yaml -lr trained_recovery_model.zip -la trained_attacker_model.zip -e 100 -v
 ```
+
+### Output
+The docker console will print the outcomes of the run: 
+```
+ATTACKS: 100 | RECOVERIES: 94  | COLLISIONS: 0
+```
+
+- `ATTACKS`: number of attacks launched
+- `RECOVERIES`: successful recoveries
+- `COLLISIONS`: collisions with obstacle or ground
+
+The videos of the simulator with and without SpecGuard are available here https://tinyurl.com/specguard
