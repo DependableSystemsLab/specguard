@@ -29,22 +29,25 @@ To run the drone, use the following script. You can optionally specify the GPU d
 ```
 To modify the directories or files that are mounted, update the `run_rover.sh` or `run_drone.sh` scripts.
 
-#### Additional steps for rover container 
-
-In the container build ArduPilot: 
-
-```
-cd ardupilot/
-./waf configure --board sitl
-./wag build --target bin/ardurover
-```
-
 ### Running the Deep-RL policy
 
 To run the Deep-RL policy **set the docker flag**, `-d`, and specify a configuration file.
 
 ```
+cd drone
 python ppo_drone.py -d -c /path/to/config
+```
+
+Additional steps for rover: Before running the policy, build ArduPilot in the container: 
+
+```
+cd ardupilot/
+./waf configure --board sitl
+./waf build --target bin/ardurover
+```
+
+```
+cd rover
 python ppo_rover.py -d -c /path/to/config
 ```
 
@@ -65,7 +68,7 @@ python ppo_rover.py -d -c configs/nh_gps.yaml
 ```
 
 ### Output
-The docker console will print the outcomes of the run: 
+The docker console will print the results: 
 ```
 ATTACKS: 100 | RECOVERIES: 94  | COLLISIONS: 0
 ```
@@ -74,4 +77,4 @@ ATTACKS: 100 | RECOVERIES: 94  | COLLISIONS: 0
 - `RECOVERIES`: successful recoveries
 - `COLLISIONS`: collisions with obstacle or ground
 
-The videos of the simulator with and without SpecGuard are available here https://tinyurl.com/specguard
+The videos of the simulation runs with and without SpecGuard are available here https://tinyurl.com/specguard
