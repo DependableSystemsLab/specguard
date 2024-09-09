@@ -738,7 +738,8 @@ class RecoveryEnv(gym.Env):
             obs: The initial observation after resetting the environment.
         """
         # Log evaluation metrics
-        content = f"ATTACKS: {self.attack_count} | FULL RECOVERIES: {self.saftey_policy_full_recoveries} | PARTIAL RECOVERIES: {self.saftey_policy_partial_recoveries}  | COLLISIONS: {self.saftey_policy_collisions} | PATH VIOLATIONS: {self.saftey_policy_far_from_path}"
+        #content = f"ATTACKS: {self.attack_count} | FULL RECOVERIES: {self.saftey_policy_full_recoveries} | PARTIAL RECOVERIES: {self.saftey_policy_partial_recoveries}  | COLLISIONS: {self.saftey_policy_collisions} | PATH VIOLATIONS: {self.saftey_policy_far_from_path}"
+        content = f"ATTACKS: {self.attack_count} | RECOVERIES: {self.saftey_policy_full_recoveries + self.saftey_policy_partial_recoveries} | COLLISIONS: {self.saftey_policy_collisions}"
         self.update_evaluation_file(content)
         if (self.evaluate):
             print(content)

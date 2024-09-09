@@ -103,6 +103,8 @@ class RecoveryEnv(gym.Env):
             wp_listener (WaypointListener): Listener for waypoint updates.
         """
         
+        
+
         # init environment
         super(RecoveryEnv, self).__init__()
 
@@ -131,8 +133,19 @@ class RecoveryEnv(gym.Env):
         # unpack paths
         self.docker = docker
         
+        # build for docker
         if (self.docker):
-            self.printVerbose("DOCKER FLAG IS SET")
+            # build ardupilot
+            configure_command = ['./waf', 'configure', '--board', 'sitl']
+            build_command = ['./waf', 'build', '--target', 'bin/ardurover']
+
+            try:
+                self.printVerbose("Building Ardupilot for Docker")
+                subprocess.run(configure_command, check=True, cwd='../ardupilot', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                subprocess.run(build_command, check=True, cwd='../ardupilot', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+                self.printVerbose("Ardupilot successfully built for Docker")
+            except:
+                self.printVerbose("Error building Ardupilot for Docker")
 
         self.airsim_directory = paths["airsim_directory"]
         self.airsim_binary_name = paths["airsim_binary_name"]
@@ -173,8 +186,6 @@ class RecoveryEnv(gym.Env):
         # Set the signal handler
         signal.signal(signal.SIGALRM, handler)
 
-        if (self.docker):
-            self.prepare_docker_build()
 
         # cleanup any open processes
         self.exit_ardupilot()
@@ -214,11 +225,6 @@ class RecoveryEnv(gym.Env):
 
         self.done_flag = True
 
-    def prepare_docker_build(self):
-        
-        self.launchArdupilot()
-
-        time.sleep(LONG_SLEEP)
 
     
     def cleanup_processes(self):
@@ -307,7 +313,7 @@ class RecoveryEnv(gym.Env):
         command = None
 
         if self.docker:
-            command = ["./" + str(self.airsim_binary_name) + ".sh", "-RenderOffscreen", "-nosound", "-ResX=640", "-ResY=640", "-windowed"]
+            command = ["./" + str(self.airsim_binary_name) + ".sh", "-RenderOffscreen", "-nosound", "-ResX=640", "-ResY=640", "-windowed", "-nullrhi"]
         else:
             command = ["gnome-terminal", "--", "./" + str(self.airsim_binary_name) + ".sh", "-ResX=640", "-ResY=640", "-windowed"]
             
@@ -1261,7 +1267,3 @@ class RecoveryEnv(gym.Env):
 
         observation = np.reshape(padded_buffer, (self.buffer_size, SENSOR_SIZE))
         return observation
-
-
-
-    

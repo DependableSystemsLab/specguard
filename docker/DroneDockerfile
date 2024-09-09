@@ -73,7 +73,6 @@ RUN ln -sf /usr/bin/python3.8 /usr/bin/python3
 RUN python3 -m pip install numpy
 RUN python3 -m pip install setuptools
 RUN python3 -m pip install tensorflow
-RUN python3 -m pip install gym
 RUN python3 -m pip install geopy
 RUN python3 -m pip install pillow
 RUN python3 -m pip install msgpack-rpc-python
@@ -89,8 +88,10 @@ RUN python3 -m pip install jsonschema
 RUN python3 -m pip install toml
 RUN python3 -m pip install regex
 RUN python3 -m pip install argparse
+RUN python3 -m pip install gymnasium
 RUN python3 -m pip install sb3_contrib
-RUN python3 -m pip install sb3_contrib
+RUN python3 -m pip install stable-baselines3[extra]
+RUN python3 -m pip install gym
 RUN python3 -m pip install 'shimmy>=0.2.1'
 
 # Container start dir.

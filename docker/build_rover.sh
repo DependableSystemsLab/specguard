@@ -7,4 +7,4 @@ IMAGE_NAME=drl-rover-docker
 DOCKERFILE=RoverDockerfile
 
 # Rebuild the image if required
-docker build -t $IMAGE_NAME -f $DOCKERFILE .
+docker build --no-cache -t $IMAGE_NAME -f $DOCKERFILE .
