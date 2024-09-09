@@ -22,12 +22,22 @@ To customize the Docker image, edit `DroneDockerfile` or `RoverDockerfile`. Note
 
 ### Running the container
 
-To run the drone or rover container, use the corresponding script. You can optionally specify the GPU device for running the container.  
+To run the drone, use the following script. You can optionally specify the GPU device for running the container.  
 ```
 ./run_drone.sh <gpu_device>
 ./run_rover.sh <gpu_device>
 ```
 To modify the directories or files that are mounted, update the `run_rover.sh` or `run_drone.sh` scripts.
+
+#### Additional steps for rover container 
+
+In the container build ArduPilot: 
+
+```
+cd ardupilot/
+./waf configure --board sitl
+./wag build --target bin/ardurover
+```
 
 ### Running the Deep-RL policy
 
