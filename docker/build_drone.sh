@@ -7,4 +7,4 @@ IMAGE_NAME=drl-drone-docker
 DOCKERFILE=DroneDockerfile
 
 # Rebuild the image if required
-docker build --no-cache -t $IMAGE_NAME -f $DOCKERFILE .
+docker build -t $IMAGE_NAME -f $DOCKERFILE .
