@@ -70,29 +70,29 @@ RUN apt install -y python3.8
 RUN python3.8 -m pip install pip --upgrade
 RUN ln -sf /usr/bin/python3.8 /usr/bin/python3
 
-RUN python3 -m pip install numpy
-RUN python3 -m pip install setuptools
-RUN python3 -m pip install tensorflow
-RUN python3 -m pip install geopy
-RUN python3 -m pip install pillow
-RUN python3 -m pip install msgpack-rpc-python
-RUN python3 -m pip install airsim
-RUN python3 -m pip install pyproj
-RUN python3 -m pip install dronekit
-RUN python3 -m pip install kconfiglib
-RUN python3 -m pip install jinja2
-RUN python3 -m pip install empy
-RUN python3 -m pip install pyyaml
-RUN python3 -m pip install pyros-genmsg
-RUN python3 -m pip install jsonschema
-RUN python3 -m pip install toml
-RUN python3 -m pip install regex
-RUN python3 -m pip install argparse
-RUN python3 -m pip install gymnasium
-RUN python3 -m pip install sb3_contrib
-RUN python3 -m pip install stable-baselines3[extra]
-RUN python3 -m pip install gym
-RUN python3 -m pip install 'shimmy>=0.2.1'
+RUN python3 -m pip install numpy==1.24.3
+RUN python3 -m pip install setuptools==74.1.2
+RUN python3 -m pip install tensorflow==2.13.1
+RUN python3 -m pip install geopy==2.4.1
+RUN python3 -m pip install pillow==10.4.0
+RUN python3 -m pip install msgpack-rpc-python==0.4.1
+RUN python3 -m pip install airsim==1.8.1
+RUN python3 -m pip install pyproj==3.5.0
+RUN python3 -m pip install dronekit==2.9.2
+RUN python3 -m pip install kconfiglib==14.1.0
+RUN python3 -m pip install jinja2==3.1.4
+RUN python3 -m pip install empy==3.3.4
+RUN python3 -m pip install pyyaml==6.0.2
+RUN python3 -m pip install pyros-genmsg==0.5.8
+RUN python3 -m pip install jsonschema==4.23.0
+RUN python3 -m pip install toml==0.10.2
+RUN python3 -m pip install regex==2024.7.24
+RUN python3 -m pip install argparse==1.4.0
+RUN python3 -m pip install gymnasium==0.29.1
+RUN python3 -m pip install sb3_contrib==2.3.0
+RUN python3 -m pip install stable-baselines3==2.3.2
+RUN python3 -m pip install gym==0.26.2
+RUN python3 -m pip install shimmy==1.3.0
 
 # Container start dir.
 WORKDIR /home/$USERNAME

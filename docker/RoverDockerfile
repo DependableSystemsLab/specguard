@@ -79,7 +79,7 @@ RUN python3.8 -m pip install pip --upgrade
 RUN ln -sf /usr/bin/python3.8 /usr/bin/python3
 
 RUN python3 -m pip install numpy==1.23.5
-RUN python3 -m pip install setuptools
+RUN python3 -m pip install setuptools==74.1.2
 RUN python3 -m pip install tensorflow==2.12.0
 RUN python3 -m pip install gym==0.26.2
 RUN python3 -m pip install geopy==2.3.0
@@ -88,15 +88,15 @@ RUN python3 -m pip install msgpack-rpc-python==0.4.1
 RUN python3 -m pip install airsim==1.8.1
 RUN python3 -m pip install pyproj==3.5.0
 RUN python3 -m pip install dronekit==2.9.2
-RUN python3 -m pip install kconfiglib
+RUN python3 -m pip install kconfiglib==14.1.0
 RUN python3 -m pip install Jinja2==3.1.2
 RUN python3 -m pip install empy==3.3.4
 RUN python3 -m pip install PyYAML==6.0
-RUN python3 -m pip install pyros-genmsg
+RUN python3 -m pip install pyros-genmsg==0.5.8
 RUN python3 -m pip install jsonschema==4.17.3
 RUN python3 -m pip install toml==0.10.2
 RUN python3 -m pip install pexpect==4.8.0
-RUN python3 -m pip install MAVProxy
+RUN python3 -m pip install MAVProxy==1.8.70
 RUN python3 -m pip install scipy==1.10.1
 RUN python3 -m pip install stable-baselines3==2.0.0
 RUN python3 -m pip install sb3-contrib==2.0.0
