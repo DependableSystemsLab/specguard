@@ -3,8 +3,8 @@
 ![AirSim](https://img.shields.io/badge/AirSim-1.8.1-green)
 ![PX4](https://img.shields.io/badge/PX4-1.13.3-blue)
 ![ArduPilot](https://img.shields.io/badge/ArduPilot-4.3.5-blue)
-![Python](https://img.shields.io/badge/python-3.8-blue)
-![Platform](https://img.shields.io/badge/platform-linux--64-orange)
+![Python](https://img.shields.io/badge/Python-3.8-blue)
+![Platform](https://img.shields.io/badge/Platform-linux--64-orange)
 
 Code for the paper "SpecGuard: Specification Aware Recovery for Robotic Autonomous Vehicles from Physical Attacks", CCS'2024. 
 
